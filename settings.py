@@ -20,7 +20,6 @@ INSTALLED_ADDONS = [
     'aldryn-django',
     'aldryn-sso',
     'aldryn-wagtail',
-    'divio-wagtail-home',
     # </INSTALLED_ADDONS>
 ]
 
