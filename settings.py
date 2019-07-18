@@ -45,6 +45,7 @@ aldryn_addons.settings.load(locals())
 # for guidance on managing these settings.
 
 INSTALLED_APPS.extend([
+    "llirka",
     # Extend the INSTALLED_APPS setting by listing additional applications here
 ])
 

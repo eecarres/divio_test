@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% load wagtailcore_tags %}
+
+{% block body_class %}template-homepage{% endblock %}
+
+{% block content %}
+    {{ page.body|richtext }}
+
+    {% with blocks=self.body2 %}
+
+    {% for block in blocks %}
+        {% if block.block_type == 'heading' %}
+            <h2>{{ block.value }}</h2>
+        {% else %}
+           <section class="block-{{ block.block_type }}">
+               {{ block }}
+           </section>
+        {% endif %}
+    {% endfor %}
+
+{% endwith %}
+{% endblock %}

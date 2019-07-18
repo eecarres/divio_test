@@ -1,13 +1,9 @@
 {% load static wagtailuserbar %}
 
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -18,27 +14,91 @@
                 {% endwith %}
             {% endblock %}
         </title>
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+        {% load staticfiles %}
+		<link rel='stylesheet' href="{% static '/css/bootstrap.min.css' %}" type= 'text/css' />
+		
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/mysite.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/llirka_wagtail.css' %}">
+        <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
         {% block extra_css %}
-            {# Override this in templates to add extra stylesheets #}
-        {% endblock %}
+        <style type="text/css">
+            html,
+            body {
+              height:100%;
+              width:100%
+            }
+        </style>
+    
+        <link rel="stylesheet" href="{% static 'personal/css/header.css' %}">
+        <link rel="stylesheet" href="{% static 'personal/css/registration/login.css' %}">
+            {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body class="{% block body_class %}{% endblock %}" class="body" style="background-color:#ffffff">
         {% wagtailuserbar %}
+        
 
-        {% block content %}{% endblock %}
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-        {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/mysite.js' %}"></script>
+                                    <!-- Botón que aparece en vista movil: -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
 
-        {% block extra_js %}
-            {# Override this in templates to add extra javascript #}
-        {% endblock %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Qui som?</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">Serveis</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/who-works-with-us">Treballem</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/casals">Casals Estiu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contacte</a>
+                    </li>
+                                        
+                    </ul>
+                    <!-- Botón del logo (redirige a home) -->
+                    <a class="navbar-brand" href="/"><img style='max-width:160px;' alt="Brand" src="{% static '/img/llirka_logo_shrunk.png' %}"></a>
+                
+                </div>
+    
+                </nav>
+          
+            <div class="container-fluid" style="min-height:20%; ">
+                <div class="row">
+                    <div class='container-fluid'>
+                    {% block content %}
+                    {% endblock %}	
+                    </div>
+                </div> 
+            </div>
+
+
+                    {# Global javascript #}
+                    <script type="text/javascript" src="{% static 'js/llirka_wagtail.js' %}"></script>
+
+                    {% block extra_js %}
+                        {# Override this in templates to add extra javascript #}
+                    {% endblock %}
     </body>
 </html>
